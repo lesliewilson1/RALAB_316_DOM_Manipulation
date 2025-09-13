@@ -70,7 +70,7 @@ subMenuEl.classList.add("flex-around");
 subMenuEl.style.position = "absolute";
 subMenuEl.style.top = "0";
 
-// Lab 2: Part 4
+// Lab 2: Part 4 & 5
 
 const topMenuLinks = topMenuEl.querySelectorAll("a");
 
@@ -108,12 +108,10 @@ if(links && links.subLinks) {
 }  else {
   subMenuEl.style.top = "0";
 }
-// Part Lab 5: Part 5
-
-topMenuEl.addEventListener("click", handleClick);
-
 
 }
+
+topMenuEl.addEventListener("click", handleClick);
 
 function buildSubmenu(subLinks) 
 {
