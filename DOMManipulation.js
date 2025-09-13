@@ -104,25 +104,27 @@ if (!event.target.classList.contains("active")){
 
 if(links && links.subLinks) {
   subMenuEl.style.top = "100%";
-} else {
+   buildSubmenu(links.subLinks);
+}  else {
   subMenuEl.style.top = "0";
 }
-
-function buildSubmenu(subLinks) {
-  subMenuEl.innerHTML = "";
-  const subLinksA = document.createElement("a");
-  subLinksA.setAttribute("href", item.href);
-  subLinksA.textContent = item.text;
-  subMenuEl.appendChild(subLinksA);
-
-}
-
 // Part Lab 5: Part 5
 
 topMenuEl.addEventListener("click", handleClick);
 
 
+}
+
+function buildSubmenu(subLinks) 
+{
+  subMenuEl.innerHTML = "";
+  subLinks.forEach(function(item){
+  const subLinksA = document.createElement("a");
+  subLinksA.setAttribute("href", item.href);
+  subLinksA.textContent = item.text;
+  subMenuEl.appendChild(subLinksA);
+
+});
 
 
 }
-
