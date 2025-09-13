@@ -74,6 +74,7 @@ subMenuEl.style.top = "0";
 
 const topMenuLinks = topMenuEl.querySelectorAll("a");
 
+
 function handleClick(event) {
   console.log(event.target.localName);
   event.preventDefault();
@@ -88,14 +89,40 @@ for (let link of topMenuLinks)     {
         link.classList.remove("active");
     }
 }
+const clickedText = event.target.textContent;
+const links = menuLinks.find(matchLink);
+
+function matchLink(link){
+  return link.text === clickedText;
+}
 
 
+if (!event.target.classList.contains("active")){
+  subMenuEl.style.top = "0";
+  return;
+}
 
-topMenuEl.addEventListener("click", handleClick);
+if(links && links.subLinks) {
+  subMenuEl.style.top = "100%";
+} else {
+  subMenuEl.style.top = "0";
+}
+
+function buildSubmenu(subLinks) {
+  subMenuEl.innerHTML = "";
+  const subLinksA = document.createElement("a");
+  subLinksA.setAttribute("href", item.href);
+  subLinksA.textContent = item.text;
+  subMenuEl.appendChild(subLinksA);
+
+}
 
 // Part Lab 5: Part 5
+
+topMenuEl.addEventListener("click", handleClick);
 
 
 
 
 }
+
