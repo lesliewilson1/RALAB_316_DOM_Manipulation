@@ -1,6 +1,5 @@
 const mainEl = document.querySelector("main");
 mainEl.style.backgroundColor = "var(--main-bg)";
-
 const heading = document.createElement("h1");
 const headingtitle = document.createTextNode("DOM Manipulation");
 heading.appendChild(headingtitle);
@@ -17,7 +16,7 @@ topMenuEl.style.height = "100%";
 topMenuEl.style.backgroundColor = "var(--top-menu-bg)";
 topMenuEl.classList.add("flex-around");
 
-console.log(topMenuEl);
+//console.log(topMenuEl);
 
 // Part 3: Adding Menu Buttons
 
@@ -70,6 +69,20 @@ subMenuEl.classList.add("flex-around");
 subMenuEl.style.position = "absolute";
 subMenuEl.style.top = "0";
 
+function subMenuElClick(event) {
+  console.log(event.target.localName);
+  event.preventDefault();
+
+if (event.target.localName !== "a") {
+  return;
+}
+console.log(event.target.textContent);
+subMenuEl.style.top = "0";
+}
+
+subMenuEl.addEventListener("click", subMenuElClick);
+
+
 // Lab 2: Part 4 & 5
 
 const topMenuLinks = topMenuEl.querySelectorAll("a");
@@ -109,6 +122,7 @@ if(links && links.subLinks) {
   subMenuEl.style.top = "0";
 }
 
+
 }
 
 topMenuEl.addEventListener("click", handleClick);
@@ -126,3 +140,13 @@ function buildSubmenu(subLinks)
 
 
 }
+for (let link of topMenuLinks){
+  link.classList.remove("active");
+}
+
+
+
+
+/*
+Update the contents of mainEl, within an <h1>, to the contents of the <a> element clicked within subMenuEl.
+If the ABOUT link is clicked, an <h1>About</h1> should be displayed.*/
